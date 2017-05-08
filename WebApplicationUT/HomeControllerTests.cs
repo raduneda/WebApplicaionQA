@@ -1,8 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿//  --------------------------------------------------------------------------------------------
+//  <Copyright>
+//      Copyright © 2004 - 2017 Stabiplan bv. / Stabiplan International bv. All rights reserved.
+//  </Copyright>
+//  --------------------------------------------------------------------------------------------
+
 using System.Web.Mvc;
 
 using NUnit.Framework;
@@ -21,14 +22,18 @@ namespace WebApplicationUT
 {
    class HomeControllerTests : BaseTestClass
    {
-      private HomeController _homeController;
+      #region Setup/Teardown
 
       [SetUp]
       public void Setup()
       {
          //Arrange
-         _homeController = new HomeController(new AboutManagerTesting(), new ContactManagerTesting());
+         _homeController = new HomeController(null, new AboutManagerTesting(), new ContactManagerTesting(), new VirtualManager());
       }
+
+      #endregion
+
+      #region Tests
 
       [Test]
       public void TestHomeControllerAbout()
@@ -56,6 +61,12 @@ namespace WebApplicationUT
          Assert.AreEqual("testReadContactt", resultDto.Value);
       }
 
+      #endregion
+
+      #region Private Methods
+
+      private HomeController _homeController;
+
       private static AboutDto GetAboutDto(ActionResult result)
       {
          AboutDto resultDto;
@@ -64,5 +75,7 @@ namespace WebApplicationUT
          resultDto = viewModel.About;
          return resultDto;
       }
+
+      #endregion
    }
 }
