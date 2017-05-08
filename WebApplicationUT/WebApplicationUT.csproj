@@ -73,9 +73,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutManagerTest.cs" />
     <Compile Include="BaseTestClass.cs" />
     <Compile Include="Dependencies\ContactManagerTesting.cs" />
     <Compile Include="Dependencies\AboutManagerTesting.cs" />
+    <Compile Include="Dependencies\DatabaseManagerTestingFalse.cs" />
+    <Compile Include="Dependencies\DatabaseManagerTesting.cs" />
     <Compile Include="HomeControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -87,6 +90,10 @@
     <ProjectReference Include="..\WebApplicationQABL\WebApplicationQABL.csproj">
       <Project>{4D064276-4986-42A5-BCF4-9756375C0CC6}</Project>
       <Name>WebApplicationQABL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebApplicationQADL\WebApplicationQADL.csproj">
+      <Project>{f3499206-d387-4cb5-87fc-686723869675}</Project>
+      <Name>WebApplicationQADL</Name>
     </ProjectReference>
     <ProjectReference Include="..\WebApplicationQATL\WebApplicationQATL.csproj">
       <Project>{83C917A6-9964-4E3F-A12E-921FB83FDD1E}</Project>
