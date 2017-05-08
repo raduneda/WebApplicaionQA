@@ -20,6 +20,11 @@ namespace WebApplicationQATL
          return "This is the original Name";
       }
 
+      public virtual string VirtualName2()
+      {
+         return "This is the original Name2";
+      }
+
       #endregion
    }
 }

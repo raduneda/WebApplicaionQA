@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using Moq;
+
 using NUnit.Framework;
 
 using WebApplicationQABL;
@@ -96,6 +98,42 @@ namespace WebApplicationUT
       {
          Exception result = Assert.Throws<Exception>(() => _aboutManager.Read(2));
          Assert.AreEqual("Invalid DTO", result.Message);
+      }
+
+      [Test]
+      public void UpdateTest()
+      {
+         //arrange
+         Mock<IDatabaseManager> mockDbManager = new Mock<IDatabaseManager>();
+         mockDbManager.Setup(m => m.UpdateHomeAbout(It.IsAny<AboutDto>())).Returns(true);
+
+         AboutDto testDto = new AboutDto { Id = 1, Value = "test" };
+
+         _aboutManager = new AboutManager(mockDbManager.Object);
+
+         //Act
+         AboutDto resultDto = _aboutManager.Update(testDto);
+
+         //Assert
+         Assert.AreEqual(testDto.Id,resultDto.Id);
+         Assert.AreEqual(testDto.Value, resultDto.Value);
+      }
+
+      [Test]
+      public void UpdateExceptionTest()
+      {
+         //arrange
+         Mock<IDatabaseManager> mockDbManager = new Mock<IDatabaseManager>();
+         mockDbManager.Setup(m => m.UpdateHomeAbout(It.IsAny<AboutDto>())).Throws(new Exception());
+
+         AboutDto testDto = new AboutDto { Id = 1, Value = "test" };
+
+         _aboutManager = new AboutManager(mockDbManager.Object);
+
+         //Act
+         Assert.Throws<Exception>(()=> _aboutManager.Update(testDto));
+
+         mockDbManager.Verify(m => m.UpdateHomeAbout(It.IsAny<AboutDto>()),Times.Exactly(1));
       }
    }
 }
