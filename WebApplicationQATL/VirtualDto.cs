@@ -4,19 +4,21 @@
 //  </Copyright>
 //  --------------------------------------------------------------------------------------------
 
-using WebApplicationQATL;
-
-
-namespace WebApplicationQA.Models
+namespace WebApplicationQATL
 {
-   public class HomeViewModel
+   public class VirtualDto
    {
-      #region Members
+      #region Methods - Public
 
-      public AboutDto About;
-      public ContactDto Contact;
-      public string Browser;
-      public VirtualDto Virtual;
+      public string HardCodedName()
+      {
+         return "This is the original hard coded name";
+      }
+
+      public virtual string VirtualName()
+      {
+         return "This is the original Name";
+      }
 
       #endregion
    }

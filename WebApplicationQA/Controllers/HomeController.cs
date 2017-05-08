@@ -5,6 +5,7 @@
 //  --------------------------------------------------------------------------------------------
 
 using System;
+using System.Web;
 using System.Web.Mvc;
 
 using WebApplicationQA.Models;
@@ -16,22 +17,27 @@ using WebApplicationQADL;
 
 namespace WebApplicationQA.Controllers
 {
-   public class HomeController : Controller
+   public class HomeController : BaseController
    {
       #region Members
 
       private readonly IAboutManager _aboutManager;
       private readonly IContactManager _contactManager;
+      private readonly VirtualManager _virtualManager;
 
       #endregion
 
       #region Constructors
 
-      public HomeController() : this(new AboutManager(new DatabaseManager()), new ContactManager(new DatabaseManager()))
+      public HomeController()
       {
+         _aboutManager = new AboutManager(new DatabaseManager());
+         _contactManager = new ContactManager(new DatabaseManager());
+         _virtualManager = new VirtualManager();
       }
 
-      public HomeController(IAboutManager aboutManager, IContactManager contactManager)
+      public HomeController(HttpContextBase httpContextBase, IAboutManager aboutManager, IContactManager contactManager, VirtualManager virtualManager)
+         : base(httpContextBase)
       {
          if (null == aboutManager) {
             throw new ArgumentNullException(nameof(aboutManager));
@@ -41,8 +47,13 @@ namespace WebApplicationQA.Controllers
             throw new ArgumentNullException(nameof(contactManager));
          }
 
+         if (null == virtualManager) {
+            throw new ArgumentNullException(nameof(virtualManager));
+         }
+
          _aboutManager = aboutManager;
          _contactManager = contactManager;
+         _virtualManager = virtualManager;
       }
 
       #endregion
@@ -70,6 +81,12 @@ namespace WebApplicationQA.Controllers
          _contactManager.Create("Your contact page.");
 
          return View();
+      }
+
+      public ActionResult UserAgent()
+      {
+         HomeViewModel homeViewModel = new HomeViewModel { Browser = _contextBase.Request.UserAgent, Virtual = _virtualManager.Read() };
+         return View(homeViewModel);
       }
 
       #endregion

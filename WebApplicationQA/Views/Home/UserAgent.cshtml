@@ -1,0 +1,11 @@
+﻿@model WebApplicationQA.Models.HomeViewModel
+
+@{
+    ViewBag.Title = "UserAgent";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@Model.Browser</h3>
+
+<h3>Hard coded name is  @Model.Virtual.HardCodedName()</h3>
+
+<h3>Virtual name is @Model.Virtual.VirtualName()</h3>

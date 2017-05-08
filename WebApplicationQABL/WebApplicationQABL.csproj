@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="VirtualManager.cs" />
     <Compile Include="ContactManager.cs" />
     <Compile Include="AboutManager.cs" />
     <Compile Include="IAboutManager.cs" />

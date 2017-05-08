@@ -7,16 +7,21 @@
 using WebApplicationQATL;
 
 
-namespace WebApplicationQA.Models
+namespace WebApplicationQABL
 {
-   public class HomeViewModel
+   /// <summary>
+   ///    CRUD
+   /// </summary>
+   public class VirtualManager
    {
-      #region Members
+      #region Methods - Public
 
-      public AboutDto About;
-      public ContactDto Contact;
-      public string Browser;
-      public VirtualDto Virtual;
+      private static readonly VirtualDto VIRTUAL_DTO = new VirtualDto();
+
+      public VirtualDto Read()
+      {
+         return VIRTUAL_DTO;
+      }
 
       #endregion
    }
