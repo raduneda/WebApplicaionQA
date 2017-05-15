@@ -87,6 +87,7 @@
     <Compile Include="Dependencies\AboutManagerTesting.cs" />
     <Compile Include="Dependencies\DatabaseManagerTestingFalse.cs" />
     <Compile Include="Dependencies\DatabaseManagerTesting.cs" />
+    <Compile Include="HomeControllerTestsMoq.cs" />
     <Compile Include="HomeControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
