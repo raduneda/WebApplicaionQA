@@ -16,6 +16,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{16E519FA-1EBB-4755-8081-9F67D70695BE}"
 	ProjectSection(SolutionItems) = preProject
 		Session4.txt = Session4.txt
+		Session5.txt = Session5.txt
+		Sessions.rar = Sessions.rar
 	EndProjectSection
 EndProject
 Global

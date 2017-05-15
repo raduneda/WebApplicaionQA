@@ -1,0 +1,2 @@
+1. Create Integration Tests for ContactManager
+2. Create Integration Tests for VirtualManager
