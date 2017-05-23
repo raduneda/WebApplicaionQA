@@ -46,11 +46,17 @@
   <ItemGroup>
     <Compile Include="DatabaseManagerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ContactManagerTests.cs" />
+    <Compile Include="VirtualManagerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WebApplicationQABL\WebApplicationQABL.csproj">
+      <Project>{4D064276-4986-42A5-BCF4-9756375C0CC6}</Project>
+      <Name>WebApplicationQABL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WebApplicationQADL\WebApplicationQADL.csproj">
       <Project>{F3499206-D387-4CB5-87FC-686723869675}</Project>
       <Name>WebApplicationQADL</Name>
@@ -59,6 +65,9 @@
       <Project>{83C917A6-9964-4E3F-A12E-921FB83FDD1E}</Project>
       <Name>WebApplicationQATL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
